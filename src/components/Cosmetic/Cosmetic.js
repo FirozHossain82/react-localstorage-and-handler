@@ -1,11 +1,16 @@
 import React from "react";
-import { addToDb } from "../../utilities/storage";
+import { addToDb, removeFromDb } from "../../utilities/storage";
 
 const Cosmetic = (props) => {
   const { name, price, id } = props.cosmetic;
   const addToCart = (id) =>{
     addToDb(id)
   }
+  
+  const removeFromCart = (id) =>{
+    removeFromDb(id)
+  }
+
   return (
     <div
       style={{
@@ -22,6 +27,7 @@ const Cosmetic = (props) => {
         <small>Id Is: {id}</small>
       </p>
       <button onClick={() => addToCart(id)} style={{border:'2px solid green',padding:'7px',borderRadius:'2px'}}>Add To Cart</button>
+      <button onClick={() => removeFromCart(id)} style={{border:'2px solid green',padding:'7px',borderRadius:'2px'}}>Remove</button>
     </div>
   );
 };
